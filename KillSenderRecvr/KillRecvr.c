@@ -43,6 +43,7 @@ static void SIGCHLDHandler(int sig)
 
 int main(int argc, char * argv[])
 {
+	//register signals' handlers
 	signal(SIGUSR1, SIGUSR1Handler);
 	signal(SIGUSR2, SIGUSR2Handler);
 	signal(SIGINT, SIGINTHandler);//ctrl+c
