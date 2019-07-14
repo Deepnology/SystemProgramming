@@ -9,35 +9,59 @@
 
 static void SIGUSR1Handler(int sig)
 {
-	printf("__SIGUSR1 received: %d\n", sig);
+	printf("%d_%d_SIGUSR1 received: %d\n", getpid(), getppid(), sig);
 }
 static void SIGUSR2Handler(int sig)
 {
-	printf("__SIGUSR2 received: %d\n", sig);
+	printf("%d_%d_SIGUSR2 received: %d\n", getpid(), getppid(), sig);
 }
 static void SIGINTHandler(int sig)
 {
-	printf("__SIGINT received or Ctrl+C pressed: %d\n", sig);
+	printf("%d_%d_SIGINT received or Ctrl+C pressed: %d\n", getpid(), getppid(), sig);
 }
 static void SIGABRTHandler(int sig)
 {
-	printf("__SIGABRT received or abort() was called: %d\n", sig);
+	printf("%d_%d_SIGABRT received or abort() was called: %d\n", getpid(), getppid(), sig);
 }
 static void SIGTERMHandler(int sig)
 {
-	printf("__SIGTERM received: %d\n", sig);//SIGTERM can be caught
+	printf("%d_%d_SIGTERM received: %d\n", getpid(), getppid(), sig);//SIGTERM can be caught
 }
 static void SIGKILLHandler(int sig)
 {
-	printf("__SIGKILL received: %d\n", sig);//SIGKILL cannot be caught
+	printf("%d_%d_SIGKILL received: %d\n", getpid(), getppid(), sig);//SIGKILL cannot be caught
 }
 static void SIGSEGVHandler(int sig)
 {
-	printf("__SIGSEGV received: %d\n", sig);
+	printf("%d_%d_SIGSEGV received: %d\n", getpid(), getppid(), sig);
 }
 static void SIGCHLDHandler(int sig)
 {
-	printf("__SIGCHLD received: %d\n", sig);
+	printf("%d_%d_SIGCHLD received: %d\n", getpid(), getppid(), sig);
+}
+static void SIGSTOPHandler(int sig)
+{
+	printf("%d_%d_SIGSTOP received: %d\n", getpid(), getppid(), sig);//SIGSTOP cannot be caught
+}
+static void SIGCONTHandler(int sig)
+{
+	printf("%d_%d_SIGCONT received: %d\n", getpid(), getppid(), sig);
+}
+static void SIGHUPHandler(int sig)
+{
+	printf("%d_%d_SIGHUP received: %d\n", getpid(), getppid(), sig);
+}
+static void SIGQUITHandler(int sig)
+{
+	printf("%d_%d_SIGQUIT received: %d\n", getpid(), getppid(), sig);
+}
+static void SIGILLHandler(int sig)
+{
+	printf("%d_%d_SIGILL received: %d\n", getpid(), getppid(), sig);
+}
+static void SIGTRAPHandler(int sig)
+{
+	printf("%d_%d_SIGTRAP received: %d\n", getpid(), getppid(), sig);
 }
 
 
@@ -51,8 +75,14 @@ int main(int argc, char * argv[])
 	signal(SIGTERM, SIGTERMHandler);//raised when kill is invoked, can be caught.
 	signal(SIGKILL, SIGKILLHandler);//SIGKILL cannot be caught
 	signal(SIGSEGV, SIGSEGVHandler);//segmentation fault, raised by the kernel to the process when illegal memory is referenced
-	signal(SIGCHLD,SIGCHLDHandler);//when a child process terminates, this signal is sent to the parent.
+	signal(SIGCHLD, SIGCHLDHandler);//when a child process terminates, this signal is sent to the parent.
 					//upon receiving this signal, parent should execute wait() system call to read child status.
+	signal(SIGSTOP, SIGSTOPHandler);//pause(block) the process in its current state. it cannot be caught
+	signal(SIGCONT, SIGCONTHandler);//resume(unblock) the process that was paused with SIGSTOP
+	signal(SIGHUP, SIGHUPHandler);//hangup the process
+	signal(SIGQUIT, SIGQUITHandler);//quit the process
+	signal(SIGILL, SIGILLHandler);//illegal instruction
+	signal(SIGTRAP, SIGTRAPHandler);//trace trap
 
 
 	int pid = fork();
