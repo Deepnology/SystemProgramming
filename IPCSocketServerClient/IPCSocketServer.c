@@ -64,11 +64,10 @@ int main(int argc, char * argv[])
 			int readSize = read(clientSocketFD, &dataBuff, sizeof(dataBuff));
 			dataBuff = ntohl(dataBuff);
 			printf("Read: %d, %d\n", readSize, dataBuff);
-			if (readSize = -1)
+			if (readSize == -1)
 			{
-				printf("Read: %d, %s\n", readSize, strerror(errno));
 				perror("Read");
-				//exit(EXIT_FAILURE);
+				exit(EXIT_FAILURE);
 			}
 			if (dataBuff == 0) 
 				break;

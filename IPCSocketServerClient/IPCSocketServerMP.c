@@ -126,11 +126,10 @@ int main(int argc, char * argv[])
 					printf("Read from %d .... \n", clientSocketFD);
 					int readSize = read(clientSocketFD, buff, BUFFER_SIZE);
 					printf("Read: %d, %s\n", readSize, buff);
-					if (readSize = -1)
+					if (readSize == -1)
 					{
-						printf("Read: %d, %s\n", readSize, strerror(errno));
 						perror("Read");
-						//exit(EXIT_FAILURE);
+						exit(EXIT_FAILURE);
 					}
 					memcpy(&dataBuff, buff, sizeof(int));
 					dataBuff = ntohl(dataBuff);
