@@ -16,8 +16,8 @@ void init_serialize_buffer_of_defined_size(ser_buff_t **b, int size);
 
 /*get functions*/
 char is_serialize_buffer_empty(ser_buff_t *b);
-int get_serialize_buffer_size(ser_buff_t *b);
-int get_serialize_buffer_length(ser_buff_t *b);
+int get_serialize_buffer_data_size(ser_buff_t *b); //total data size
+int get_serialize_buffer_size(ser_buff_t *b); //total buffer size
 int get_serialize_buffer_current_ptr_offset(ser_buff_t *b);
 char * get_serialize_buffer_current_ptr(ser_buff_t *b);
 

@@ -25,11 +25,11 @@ char is_serialize_buffer_empty(ser_buff_t *b)
 	if (b->next == 0) return 1;
 	return 0;
 }
-int get_serialize_buffer_size(ser_buff_t *b)
+int get_serialize_buffer_data_size(ser_buff_t *b) //total data size
 {
 	return b->next;
 }
-int get_serialize_buffer_length(ser_buff_t *b)
+int get_serialize_buffer_size(ser_buff_t *b) //total buffer size
 {
 	return b->size;
 }

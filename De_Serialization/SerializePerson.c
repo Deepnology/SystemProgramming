@@ -157,7 +157,7 @@ void print_person(person_t *obj)
 int main(int argc, char **argv)
 {
 	person_t p1;
-	memset(&p1, 0, sizeof(person_t));
+	memset(&p1, 0, sizeof(person_t)); //note: sizeof(person_t) will return the size in bytes after adding padded bytes by compiler !!!
 	p1.vehicle_nos[0] = 1000;
 	p1.vehicle_nos[1] = 1001;
 	p1.vehicle_nos[2] = 1002;
