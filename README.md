@@ -1,3 +1,3 @@
-# System Progm Repository
+# SystemProgm Repository
 
-System Programming
+Linux System Programming in C/C++: Multithreading, Multiprocessing, IPC, RPC, TCP/UDP Socket
