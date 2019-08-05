@@ -127,6 +127,7 @@ int main(int argc, char * argv[])
 gcc -g -c SerializeLinkedList.c -o SerializeLinkedList.o
 gcc -g -c Serialize.c -o Serialize.o
 gcc -g SerializeLinkedList.o Serialize.o -o SerializeLinkedList
+valgrind --leak-check=full ./SerializeLinkedList
  *
  */
 
