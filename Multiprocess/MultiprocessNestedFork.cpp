@@ -318,5 +318,5 @@ int main()
 /*
 g++ MultiprocessNestedFork.cpp -o MultiprocessNestedFork -lpthread -lrt
 
-valgrind --leak-check=full MultiprocessNestedFork
+valgrind --leak-check=full ./MultiprocessNestedFork
 */
