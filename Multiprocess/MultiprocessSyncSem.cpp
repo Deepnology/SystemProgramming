@@ -155,5 +155,5 @@ int main()
 /*
 g++ MultiprocessSyncSem.cpp -o MultiprocessSyncSem -lpthread -lrt
 
-valgrind --leak-check=full MultiprocessSyncSem
+valgrind --leak-check=full ./MultiprocessSyncSem
 */
