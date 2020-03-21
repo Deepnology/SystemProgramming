@@ -115,7 +115,7 @@ int main(int argc, char * argv[])
 {
 	if (argc != 2)
 	{
-		printf("fork_prevent_zombie 0/1/2\n0: use wait, 1: use SIGCHLD handler, 2: use SIGCHLD SIG_IGN, 3: leave child zombie\n");
+		printf("fork_prevent_zombie 0/1/2/3\n0: use wait, 1: use SIGCHLD handler, 2: use SIGCHLD SIG_IGN, 3: leave child zombie\n");
 		exit(EXIT_FAILURE);
 	}
 	if (strncmp(argv[1], "0", 1) == 0)
