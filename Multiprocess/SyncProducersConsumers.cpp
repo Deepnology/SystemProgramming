@@ -122,8 +122,8 @@ struct ProducerConsumerQueue
 	void Insert(int pid)
 	{
 		sem_wait(&m_semaphoreMutex);
-		if (m_next >= MAX_PROCESS_COUNT) return;
-		m_pid[m_next++] = pid;
+		if (m_next < MAX_PROCESS_COUNT)
+			m_pid[m_next++] = pid;
 		sem_post(&m_semaphoreMutex);
 	}
 	void PrintPid()
