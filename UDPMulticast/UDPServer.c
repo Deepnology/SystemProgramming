@@ -36,7 +36,7 @@ static void * RecvrThreadFunc(void * args)
 		struct sockaddr_in clntAddr;
 		int clntAddrLen = sizeof(clntAddr);
 		int recvSize = recvfrom(serverSocketFD, recvBuf, sizeof(recvBuf), 0,
-				(struct sockaddr*)&clntAddr, &clntAddrLen);
+				(struct sockaddr*)&clntAddr, (socklen_t*)&clntAddrLen);
 		printf("Recv: %d, %s, %u: %.*s\n", recvSize, inet_ntoa(clntAddr.sin_addr), ntohs(clntAddr.sin_port),
 				recvSize, recvBuf);
 		if (recvSize == -1)
